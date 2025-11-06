@@ -1,0 +1,22 @@
+NODE_ENV=development
+PORT=3002
+FRONTEND_URL=http://localhost:3000
+
+# Gemini API Configuration
+GEMINI_API_KEY=AIzaSyBlOaD2h1FUjMuTettR94rmpdK7OgHuBLg
+GEMINI_MODEL=gemini-2.0-flash-exp,gemini-1.5-flash,gemini-1.5-pro
+
+# Optional: Multiple API keys for fallback
+# GEMINI_API_KEY_1=your_first_api_key_here
+# GEMINI_API_KEY_2=your_second_api_key_here
+
+# Optional: Mock mode for testing without API
+# MOCK_GEMINI=false
+
+# Firebase Configuration (optional)
+# FIREBASE_SERVICE_ACCOUNT_KEY={"type":"service_account","project_id":"..."}
+
+# Other API keys as needed
+# JSEARCH_API_KEY=your_jsearch_api_key_here
+# ADZUNA_API_ID=your_adzuna_api_id_here
+# ADZUNA_API_KEY=your_adzuna_api_key_here

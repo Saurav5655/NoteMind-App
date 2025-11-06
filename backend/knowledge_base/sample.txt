@@ -1,0 +1,4 @@
+This is a sample document in the knowledge base.
+You can add your own text files to this directory.
+The AI will be able to search for information within these files.
+This is a great way to create a private and powerful search tool.
