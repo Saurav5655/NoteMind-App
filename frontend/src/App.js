@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
+import Layout from './components/Layout';
 import { auth } from './services/firebase';
 
 function App() {
@@ -33,7 +34,18 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={!user ? <LandingPage /> : <Navigate to="/home" />} />
-        <Route path="/home" element={user ? <HomePage user={user} /> : <Navigate to="/" />} />
+        <Route
+          path="/home"
+          element={
+            user ? (
+              <Layout user={user}>
+                <HomePage user={user} />
+              </Layout>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
       </Routes>
     </Router>
   );

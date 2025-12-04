@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LandingPage.css';
 import { auth } from '../services/firebase';
 import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { createUserProfile, logError } from '../services/firebase-utils';
@@ -64,11 +63,11 @@ const LandingPage = () => {
             console.log('🚀 Attempting signInWithPopup...');
             const authResult = await signInWithPopup(auth, provider);
             console.log('Sign in popup completed');
-            
+
             if (!authResult || !authResult.user) {
                 throw new Error('No user data received from sign in');
             }
-            
+
             console.log('User obtained:', {
                 uid: authResult.user.uid,
                 email: authResult.user.email,
@@ -202,8 +201,8 @@ const LandingPage = () => {
     }
 
 
-    
-    
+
+
     const closeModal = () => {
         setShowLoginModal(false);
         setShowSignupModal(false);
@@ -218,7 +217,7 @@ const LandingPage = () => {
                 <div className="gradient-orb orb-3"></div>
             </div>
 
-            <LandingHeader 
+            <LandingHeader
                 setShowLoginModal={setShowLoginModal}
                 setError={setError}
                 setEmail={setEmail}
@@ -247,9 +246,9 @@ const LandingPage = () => {
                 Firebase: {firebaseStatus === 'ready' ? '✅ Ready' : firebaseStatus === 'error' ? '❌ Error' : '⏳ Checking...'}
             </div>
 
-            { (showLoginModal || showSignupModal) && (
+            {(showLoginModal || showSignupModal) && (
                 <div className="modal-backdrop" onClick={closeModal}>
-                    { showLoginModal && (
+                    {showLoginModal && (
                         <div className="modal" onClick={(e) => e.stopPropagation()}>
                             <div className="modal-close" onClick={closeModal}>&times;</div>
                             <div className="modal-header">
@@ -271,7 +270,7 @@ const LandingPage = () => {
                 </div>
             )}
 
-            { showSignupModal && (
+            {showSignupModal && (
                 <div className="modal" onClick={(e) => e.stopPropagation()}>
                     <div className="modal-close" onClick={closeModal}>&times;</div>
                     <div className="modal-header">
@@ -279,11 +278,11 @@ const LandingPage = () => {
                         <p>Join thousands of users who&apos;ve transformed their productivity</p>
                     </div>
                     <div className="modal-body">
-                        { !showEmailSignup ? (
+                        {!showEmailSignup ? (
                             <>
-                                <button 
+                                <button
                                     className="google-signin-button"
-                                    onClick={handleGoogleSignIn} 
+                                    onClick={handleGoogleSignIn}
                                     disabled={loading || firebaseStatus !== 'ready'}
                                 >
                                     <span className="google-icon">🔍</span>
@@ -292,8 +291,8 @@ const LandingPage = () => {
                                 <div className="divider">
                                     <span>or</span>
                                 </div>
-                                <button 
-                                    className="cta-button secondary" 
+                                <button
+                                    className="cta-button secondary"
                                     onClick={() => setShowEmailSignup(true)}
                                     disabled={firebaseStatus !== 'ready'}
                                 >

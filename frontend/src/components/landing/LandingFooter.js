@@ -2,38 +2,48 @@ import React from 'react';
 
 const LandingFooter = () => {
     return (
-        <footer className="landing-footer">
-            <div className="footer-content">
-                <div className="footer-brand">
-                    <div className="logo">
-                        <div className="logo-icon">🧠</div>
-                        <h3>NoteMind</h3>
+        <footer className="bg-muted/30 border-t border-border pt-16 pb-8 px-6">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                    <div className="col-span-1 md:col-span-1">
+                        <div className="flex items-center gap-2 mb-4">
+                            <div className="text-2xl">🧠</div>
+                            <h3 className="text-xl font-bold">NoteMind</h3>
+                        </div>
+                        <p className="text-muted-foreground">Transform your ideas into intelligent notes with AI-powered organization.</p>
                     </div>
-                    <p>Transform your ideas into intelligent notes</p>
+
+                    <div>
+                        <h4 className="font-semibold mb-4">Product</h4>
+                        <ul className="space-y-2">
+                            <li><a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a></li>
+                            <li><a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a></li>
+                            <li><a href="#security" className="text-muted-foreground hover:text-primary transition-colors">Security</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="font-semibold mb-4">Company</h4>
+                        <ul className="space-y-2">
+                            <li><a href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</a></li>
+                            <li><a href="#careers" className="text-muted-foreground hover:text-primary transition-colors">Careers</a></li>
+                            <li><a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="font-semibold mb-4">Support</h4>
+                        <ul className="space-y-2">
+                            <li><a href="#help" className="text-muted-foreground hover:text-primary transition-colors">Help Center</a></li>
+                            <li><a href="#docs" className="text-muted-foreground hover:text-primary transition-colors">Documentation</a></li>
+                            <li><a href="#community" className="text-muted-foreground hover:text-primary transition-colors">Community</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div className="footer-links">
-                    <div className="footer-column">
-                        <h4>Product</h4>
-                        <a href="#features">Features</a>
-                        <a href="#pricing">Pricing</a>
-                        <a href="#security">Security</a>
-                    </div>
-                    <div className="footer-column">
-                        <h4>Company</h4>
-                        <a href="#about">About</a>
-                        <a href="#careers">Careers</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                    <div className="footer-column">
-                        <h4>Support</h4>
-                        <a href="#help">Help Center</a>
-                        <a href="#docs">Documentation</a>
-                        <a href="#community">Community</a>
-                    </div>
+
+                <div className="border-t border-border pt-8 text-center text-muted-foreground text-sm">
+                    <p>&copy; {new Date().getFullYear()} NoteMind. All rights reserved.</p>
                 </div>
-            </div>
-            <div className="footer-bottom">
-                <p>&copy; 2024 NoteMind. All rights reserved.</p>
             </div>
         </footer>
     );

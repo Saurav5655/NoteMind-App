@@ -2,97 +2,54 @@ import React from 'react';
 
 const HeroSection = ({ openSignupModal }) => {
     return (
-        <section className="hero">
-            <div className="hero-content">
-                <div className="hero-badge">
-                    <span className="badge-icon">✨</span>
-                    <span>AI-Powered Productivity</span>
+        <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute inset-0 -z-10">
+                <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl opacity-30 animate-pulse delay-1000"></div>
+            </div>
+
+            <div className="max-w-7xl mx-auto text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/50 border border-border mb-8 animate-fade-in">
+                    <span className="text-xl">✨</span>
+                    <span className="text-sm font-medium">AI-Powered Productivity</span>
                 </div>
-                <h1 className="hero-title">
-                    Transform Your
-                    <span className="gradient-text"> Ideas</span>
-                    <br />Into Intelligent Notes
+
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent animate-slide-up">
+                    Transform Your <span className="text-primary">Ideas</span><br />
+                    Into Intelligent Notes
                 </h1>
-                <p className="hero-subtitle">
+
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up delay-100">
                     Experience the future of note-taking with AI that understands, organizes,
-                    and enhances your thoughts. Join thousands of users who&apos;ve revolutionized
+                    and enhances your thoughts. Join thousands of users who've revolutionized
                     their productivity.
                 </p>
-                <div className="hero-buttons">
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up delay-200">
                     <button
-                        className="cta-button primary"
                         onClick={openSignupModal}
+                        className="h-12 px-8 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all hover:scale-105 flex items-center gap-2"
                     >
-                        <span className="button-icon">🚀</span>
-                        Start Free Today
+                        <span>🚀</span> Start Free Today
                     </button>
-                    <button className="cta-button secondary">
-                        <span className="button-icon">▶️</span>
-                        Watch Demo
+                    <button className="h-12 px-8 rounded-full bg-secondary text-secondary-foreground font-medium hover:bg-secondary/80 transition-all hover:scale-105 flex items-center gap-2">
+                        <span>▶️</span> Watch Demo
                     </button>
                 </div>
-                <div className="hero-stats">
-                    <div className="stat">
-                        <span className="stat-number">10K+</span>
-                        <span className="stat-label">Active Users</span>
-                    </div>
-                    <div className="stat">
-                        <span className="stat-number">1M+</span>
-                        <span className="stat-label">Notes Created</span>
-                    </div>
-                    <div className="stat">
-                        <span className="stat-number">99.9%</span>
-                        <span className="stat-label">Uptime</span>
-                    </div>
-                </div>
-            </div>
-            <div className="hero-visual">
-                <div className="floating-cards">
-                    <div className="card card-1">
-                        <div className="card-header">
-                            <div className="card-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto mt-20 border-t border-border pt-10">
+                    {[
+                        { number: '10K+', label: 'Active Users' },
+                        { number: '1M+', label: 'Notes Created' },
+                        { number: '99.9%', label: 'Uptime' }
+                    ].map((stat, i) => (
+                        <div key={i} className="text-center">
+                            <div className="text-3xl font-bold text-foreground">{stat.number}</div>
+                            <div className="text-sm text-muted-foreground">{stat.label}</div>
                         </div>
-                        <div className="card-content">
-                            <h4>Meeting Notes</h4>
-                            <p>AI-generated summary and action items</p>
-                            <div className="ai-badge">🤖 AI Enhanced</div>
-                        </div>
-                    </div>
-                    <div className="card card-2">
-                        <div className="card-header">
-                            <div className="card-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div className="card-content">
-                            <h4>Research Notes</h4>
-                            <p>Automatically categorized and tagged</p>
-                            <div className="tags">
-                                <span className="tag">#research</span>
-                                <span className="tag">#important</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card card-3">
-                        <div className="card-header">
-                            <div className="card-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div className="card-content">
-                            <h4>Quick Ideas</h4>
-                            <p>Voice-to-text with smart formatting</p>
-                            <div className="voice-indicator">🎤 Recording...</div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>
