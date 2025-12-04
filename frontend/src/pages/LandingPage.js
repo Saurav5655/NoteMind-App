@@ -210,11 +210,7 @@ const LandingPage = () => {
     return (
         <div className="landing-page">
             {/* Animated Background */}
-            <div className="animated-bg">
-                <div className="gradient-orb orb-1"></div>
-                <div className="gradient-orb orb-2"></div>
-                <div className="gradient-orb orb-3"></div>
-            </div>
+            {/* Background handled by individual sections */}
 
             <LandingHeader
                 setShowLoginModal={setShowLoginModal}
@@ -266,50 +262,50 @@ const LandingPage = () => {
                             </div>
                         </div>
                     )}
-                </div>
-            )}
 
-            {showSignupModal && (
-                <div className="modal" onClick={(e) => e.stopPropagation()}>
-                    <div className="modal-close" onClick={closeModal}>&times;</div>
-                    <div className="modal-header">
-                        <h2>Create Your Account</h2>
-                        <p>Join thousands of users who&apos;ve transformed their productivity</p>
-                    </div>
-                    <div className="modal-body">
-                        {!showEmailSignup ? (
-                            <>
-                                <button
-                                    className="google-signin-button"
-                                    onClick={handleGoogleSignIn}
-                                    disabled={loading || firebaseStatus !== 'ready'}
-                                >
-                                    <span className="google-icon">🔍</span>
-                                    {loading ? 'Signing in...' : 'Continue with Google'}
-                                </button>
-                                <div className="divider">
-                                    <span>or</span>
-                                </div>
-                                <button
-                                    className="cta-button secondary"
-                                    onClick={() => setShowEmailSignup(true)}
-                                    disabled={firebaseStatus !== 'ready'}
-                                >
-                                    Continue with Email
-                                </button>
-                            </>
-                        ) : (
-                            <form onSubmit={handleEmailSignUp}>
-                                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                {error && <div className="error-message">{error}</div>}
-                                <button className="cta-button primary" type="submit" disabled={loading}>
-                                    {loading ? 'Creating Account...' : 'Create Account'}
-                                </button>
-                                <button className="cta-button secondary" type="button" onClick={() => setShowEmailSignup(false)}>Back</button>
-                            </form>
-                        )}
-                    </div>
+                    {showSignupModal && (
+                        <div className="modal" onClick={(e) => e.stopPropagation()}>
+                            <div className="modal-close" onClick={closeModal}>&times;</div>
+                            <div className="modal-header">
+                                <h2>Create Your Account</h2>
+                                <p>Join thousands of users who&apos;ve transformed their productivity</p>
+                            </div>
+                            <div className="modal-body">
+                                {!showEmailSignup ? (
+                                    <>
+                                        <button
+                                            className="google-signin-button"
+                                            onClick={handleGoogleSignIn}
+                                            disabled={loading || firebaseStatus !== 'ready'}
+                                        >
+                                            <span className="google-icon">🔍</span>
+                                            {loading ? 'Signing in...' : 'Continue with Google'}
+                                        </button>
+                                        <div className="divider">
+                                            <span>or</span>
+                                        </div>
+                                        <button
+                                            className="cta-button secondary"
+                                            onClick={() => setShowEmailSignup(true)}
+                                            disabled={firebaseStatus !== 'ready'}
+                                        >
+                                            Continue with Email
+                                        </button>
+                                    </>
+                                ) : (
+                                    <form onSubmit={handleEmailSignUp}>
+                                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                        {error && <div className="error-message">{error}</div>}
+                                        <button className="cta-button primary" type="submit" disabled={loading}>
+                                            {loading ? 'Creating Account...' : 'Create Account'}
+                                        </button>
+                                        <button className="cta-button secondary" type="button" onClick={() => setShowEmailSignup(false)}>Back</button>
+                                    </form>
+                                )}
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
 

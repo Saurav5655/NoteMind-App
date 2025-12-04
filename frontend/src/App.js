@@ -10,6 +10,12 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!auth) {
+      console.error('Firebase auth not initialized');
+      setLoading(false);
+      return;
+    }
+
     const unsubscribe = auth.onAuthStateChanged(user => {
       setUser(user);
       setLoading(false);
