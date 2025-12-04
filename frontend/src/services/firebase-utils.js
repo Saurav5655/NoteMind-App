@@ -9,6 +9,7 @@ import {
   onSnapshot,
   addDoc,
   getDocs,
+  deleteDoc,
   Timestamp
 } from "firebase/firestore";
 import { db } from "./firebase";
@@ -235,6 +236,52 @@ export const getNotes = async (userId) => {
     return { success: true, notes };
   } catch (error) {
     console.error("Error getting notes:", error);
+    return { success: false, error: error.message };
+  }
+};
+
+export const subscribeToNotes = (userId, callback) => {
+  try {
+    const notesRef = collection(db, "users", userId, "notes");
+    const q = query(notesRef, orderBy("updatedAt", "desc"));
+
+    return onSnapshot(q, (querySnapshot) => {
+      const notes = [];
+      querySnapshot.forEach((doc) => {
+        notes.push({
+          id: doc.id,
+          ...doc.data()
+        });
+      });
+      callback(notes);
+    });
+  } catch (error) {
+    console.error("Error subscribing to notes:", error);
+    return null;
+  }
+};
+
+export const updateNote = async (userId, noteId, updates) => {
+  try {
+    const noteRef = doc(db, "users", userId, "notes", noteId);
+    await updateDoc(noteRef, {
+      ...updates,
+      updatedAt: Timestamp.now()
+    });
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating note:", error);
+    return { success: false, error: error.message };
+  }
+};
+
+export const deleteNote = async (userId, noteId) => {
+  try {
+    const noteRef = doc(db, "users", userId, "notes", noteId);
+    await deleteDoc(noteRef);
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting note:", error);
     return { success: false, error: error.message };
   }
 };

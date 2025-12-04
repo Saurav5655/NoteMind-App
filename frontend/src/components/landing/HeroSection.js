@@ -22,7 +22,7 @@ const HeroSection = ({ openSignupModal }) => {
 
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up delay-100">
                     Experience the future of note-taking with AI that understands, organizes,
-                    and enhances your thoughts. Join thousands of users who've revolutionized
+                    and enhances your thoughts. Join thousands of users who&apos;ve revolutionized
                     their productivity.
                 </p>
 

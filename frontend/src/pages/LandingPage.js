@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../services/firebase';
-import { GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, signInWithPopup } from '../services/firebase';
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { createUserProfile, logError } from '../services/firebase-utils';
 import HeroSection from '../components/landing/HeroSection';
 import FeaturesSection from '../components/landing/FeaturesSection';
@@ -26,10 +26,9 @@ const LandingPage = () => {
         console.log('🔥 Checking Firebase initialization...');
         const checkFirebase = async () => {
             try {
-                if (auth && auth.app) {
+                if (auth) {
                     console.log('✅ Firebase auth is available');
                     setFirebaseStatus('ready');
-                    await auth.currentUser;
                 } else {
                     console.error('❌ Firebase auth is not available');
                     setFirebaseStatus('error');
