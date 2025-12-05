@@ -9,7 +9,7 @@ const MODELS = [
 ];
 
 const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models';
-const BACKEND_PROXY_PATH = process.env.REACT_APP_BACKEND_URL ? new URL('/ai/generate', process.env.REACT_APP_BACKEND_URL).toString() : '/ai/generate';
+const BACKEND_PROXY_PATH = process.env.REACT_APP_BACKEND_URL ? `${process.env.REACT_APP_BACKEND_URL}/chat` : 'http://localhost:3002/chat';
 
 /**
  * generateContent
@@ -34,7 +34,7 @@ export async function generateContent({ prompt, token } = {}) {
     const res = await fetch(BACKEND_PROXY_PATH, {
       method: 'POST',
       headers,
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify({ message: prompt }) // Server expects 'message'
     });
 
     if (!res.ok) {

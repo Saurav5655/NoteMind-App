@@ -240,23 +240,31 @@ export const getNotes = async (userId) => {
   }
 };
 
-export const subscribeToNotes = (userId, callback) => {
+export const subscribeToNotes = (userId, callback, onError) => {
   try {
     const notesRef = collection(db, "users", userId, "notes");
+    // Ensure we have a valid query; ensure index exists if needed, but for now simple query
     const q = query(notesRef, orderBy("updatedAt", "desc"));
 
-    return onSnapshot(q, (querySnapshot) => {
-      const notes = [];
-      querySnapshot.forEach((doc) => {
-        notes.push({
-          id: doc.id,
-          ...doc.data()
+    return onSnapshot(q,
+      (querySnapshot) => {
+        const notes = [];
+        querySnapshot.forEach((doc) => {
+          notes.push({
+            id: doc.id,
+            ...doc.data()
+          });
         });
-      });
-      callback(notes);
-    });
+        callback(notes);
+      },
+      (error) => {
+        console.error("Snapshot listener error:", error);
+        if (onError) onError(error);
+      }
+    );
   } catch (error) {
     console.error("Error subscribing to notes:", error);
+    if (onError) onError(error);
     return null;
   }
 };
