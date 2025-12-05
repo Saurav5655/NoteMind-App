@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, signInWithPopup } from '../services/firebase';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { createUserProfile, logError } from '../services/firebase-utils';
+import { createUserProfile } from '../services/firebase-utils';
 import HeroSection from '../components/landing/HeroSection';
 import FeaturesSection from '../components/landing/FeaturesSection';
 import TestimonialsSection from '../components/landing/TestimonialsSection';
@@ -83,7 +83,7 @@ const LandingPage = () => {
         setLoading(true);
         setError('');
         try {
-            const result = await signInWithEmailAndPassword(auth, email, password);
+            await signInWithEmailAndPassword(auth, email, password);
             navigate('/home');
         } catch (error) {
             setError("Invalid email or password.");

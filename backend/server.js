@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require('@google/generative-ai');
 const multer = require('multer');
 const pdf = require('pdf-parse');
 
@@ -39,22 +39,65 @@ app.post('/chat', async (req, res) => {
         const { message, history } = req.body;
         if (!message) return res.status(400).json({ error: 'Message is required' });
 
-        // Select model - prioritizing ones from env or falling back to a default
-        const modelName = process.env.GEMINI_MODEL ? process.env.GEMINI_MODEL.split(',')[0] : "gemini-1.5-flash";
-        const model = genAI.getGenerativeModel({ model: modelName });
+        // Select models from env
+        const models = process.env.GEMINI_MODEL
+            ? process.env.GEMINI_MODEL.split(',').map(m => m.trim())
+            : ["gemini-1.5-flash", "gemini-pro"];
 
-        const chat = model.startChat({
-            history: history || [],
-        });
+        let lastError = null;
+        let generatedText = null;
 
-        const result = await chat.sendMessage(message);
-        const response = await result.response;
-        const text = response.text();
+        // Try models in sequence
+        for (const modelName of models) {
+            try {
+                console.log(`🤖 Attempting generation with model: ${modelName}`);
+                const model = genAI.getGenerativeModel({
+                    model: modelName,
+                    safetySettings: [
+                        { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
+                        { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
+                        { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_NONE },
+                        { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE },
+                    ]
+                });
 
-        res.json({ response: text });
+                const chat = model.startChat({
+                    history: history || [],
+                });
+
+                const result = await chat.sendMessage(message);
+                const response = await result.response;
+                generatedText = response.text();
+
+                // If successful, break the loop
+                if (generatedText) break;
+            } catch (error) {
+                console.warn(`⚠️ Model ${modelName} failed:`, error.message);
+                lastError = error;
+                // Continue to next model
+            }
+        }
+
+        if (!generatedText) {
+            throw lastError || new Error("All models failed to generate response");
+        }
+
+        res.json({ text: generatedText });
     } catch (error) {
-        console.error('Chat Error:', error);
-        res.status(500).json({ error: 'Failed to generate response', details: error.message });
+        console.error('Chat Error (Full):', JSON.stringify(error, Object.getOwnPropertyNames(error), 2));
+
+        // If API key is invalid/restricted (400/403), return a friendly mock response for demo purposes
+        if (error.message?.includes('403') || error.message?.includes('Forbidden') || error.status === 403 || error.status === 400) {
+            console.log('⚠️ API Key restriction detected. Sending fallback mock response.');
+            return res.json({
+                text: "⚠️ **Demo Mode (Invalid API Key)**\n\nIt looks like your API key is restricted (likely a Firebase-only key). To get real AI responses:\n\n1. Go to [Google AI Studio](https://aistudio.google.com/)\n2. Create a new API Key\n3. Update your `.env` file.\n\nIn the meantime, I am listening! This is a simulated response to verify the UI works."
+            });
+        }
+
+        if (error.response) {
+            console.error('API Response Error:', JSON.stringify(error.response, null, 2));
+        }
+        res.status(500).json({ error: 'Failed to generate response', details: error.message, fullError: error });
     }
 });
 

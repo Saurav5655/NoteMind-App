@@ -38,7 +38,12 @@ const AiChat = ({ user, onClose, onSaveToNote }) => {
             }
         } catch (error) {
             console.error("Chat Error:", error);
-            setMessages(prev => [...prev, { role: 'assistant', content: "Sorry, I encountered an error. Please try again." }]);
+            // Show more detailed error to help user debug
+            const errorMessage = error.message?.includes('403') || error.message?.includes('Forbidden')
+                ? "Error: Access Denied. Your API Key might be invalid or restricted (e.g., Firebase key instead of AI key)."
+                : `Error: ${error.message || "Failed to generate response."}`;
+
+            setMessages(prev => [...prev, { role: 'assistant', content: errorMessage }]);
         } finally {
             setIsLoading(false);
         }
@@ -77,8 +82,8 @@ const AiChat = ({ user, onClose, onSaveToNote }) => {
                     <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                         <div
                             className={`max-w-[80%] p-4 rounded-2xl ${msg.role === 'user'
-                                    ? 'bg-lovable-purple/20 border border-lovable-purple/30 text-white rounded-br-none'
-                                    : 'bg-white/5 border border-white/10 text-gray-200 rounded-bl-none'
+                                ? 'bg-lovable-purple/20 border border-lovable-purple/30 text-white rounded-br-none'
+                                : 'bg-white/5 border border-white/10 text-gray-200 rounded-bl-none'
                                 }`}
                         >
                             <p className="whitespace-pre-wrap text-sm leading-relaxed">{msg.content}</p>

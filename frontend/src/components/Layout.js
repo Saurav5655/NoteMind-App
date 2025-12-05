@@ -1,7 +1,6 @@
 import React from 'react';
-import Header from './Header';
 
-const Layout = ({ children, user }) => {
+const Layout = ({ children }) => {
     return (
         <div className="flex h-screen bg-background overflow-hidden">
             {/* Sidebar is now handled within MainApp/HomePage for better state control */}
