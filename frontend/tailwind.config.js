@@ -7,6 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Portfolio Colors
+        dark: "#0A0A0A",
+        'portfolio-primary': "#9A5CFF",
+        'portfolio-secondary': "#4BA3FF",
+        'portfolio-accent': "#4BFFB3",
+        'portfolio-dark': "#0A0A0A",
+
+        // Existing Colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -41,7 +49,6 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Lovable Palette
         lovable: {
           purple: "#8B5CF6",
           pink: "#EC4899",
@@ -49,14 +56,15 @@ module.exports = {
           teal: "#14B8A6",
         }
       },
+      fontFamily: {
+        sans: ['Outfit', 'Inter', 'sans-serif'],
+        heading: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        display: ['Orbitron', 'sans-serif'],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      fontFamily: {
-        sans: ['Outfit', 'Inter', 'sans-serif'],
-        heading: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
