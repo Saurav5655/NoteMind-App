@@ -1,15 +1,16 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 
 const skillsData = {
-    "Cybersecurity": [
-        "Penetration Testing", "Threat Analysis", "Hardening", "OSINT", "Network Defense", "Cryptography"
+    "AI Capabilities": [
+        "Layout Generation", "Content Writing", "Image Synthesis", "Code Optimization", "SEO Analysis"
     ],
-    "Web Development": [
-        "HTML5", "CSS3", "JavaScript (ES6+)", "React", "Next.js", "Node.js", "MongoDB", "Tailwind CSS"
+    "Tech Stack": [
+        "React Native", "Next.js 14", "Tailwind CSS", "Node.js", "Python AI"
     ],
-    "Tools & Platforms": [
-        "Burp Suite", "Wireshark", "Metasploit", "Git/GitHub", "Docker", "Linux (Kali/Ubuntu)"
+    "Security": [
+        "DDoS Protection", "SSL/TLS", "Auto-Patching", "Threat Detection", "Secure Auth"
     ]
 };
 
@@ -17,8 +18,8 @@ const Skills = () => {
     return (
         <section id="skills" className="py-20">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Technical <span className="text-primary">Arsenal</span></h2>
-                <p className="text-gray-400">Tools and technologies I use to secure and build.</p>
+                <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Platform <span className="text-primary">Capabilities</span></h2>
+                <p className="text-gray-400">Everything you need to build the next unicorn.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
