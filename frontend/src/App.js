@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import Layout from './components/Layout';
 import { auth } from './services/firebase';
 
+// ThreeScene import removed
+
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -33,27 +35,30 @@ function App() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Or a proper loading spinner
+    return <div className="text-white flex items-center justify-center h-screen bg-black">Loading interface...</div>;
   }
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={!user ? <LandingPage /> : <Navigate to="/home" />} />
-        <Route
-          path="/home"
-          element={
-            user ? (
-              <Layout user={user}>
-                <HomePage user={user} />
-              </Layout>
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
-      </Routes>
-    </Router>
+    <>
+      {/* ThreeScene removed for simple design */}
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <Routes>
+          <Route path="/" element={!user ? <LandingPage /> : <Navigate to="/home" />} />
+          <Route
+            path="/home"
+            element={
+              user ? (
+                <Layout user={user}>
+                  <HomePage user={user} />
+                </Layout>
+              ) : (
+                <Navigate to="/" />
+              )
+            }
+          />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

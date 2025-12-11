@@ -1,0 +1,44 @@
+
+> frontend@0.1.0 build
+> react-app-rewired build
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+node:internal/modules/cjs/loader:1386
+  throw err;
+  ^
+
+Error: Cannot find module 'metadata.js'
+Require stack:
+- C:\Users\RDP\Desktop\NoteMind-App\node_modules\monaco-editor-webpack-plugin\out\index.js
+- C:\Users\RDP\Desktop\NoteMind-App\frontend\config-overrides.js
+- C:\Users\RDP\Desktop\NoteMind-App\node_modules\react-app-rewired\config-overrides.js
+- C:\Users\RDP\Desktop\NoteMind-App\node_modules\react-app-rewired\overrides\paths.js
+- C:\Users\RDP\Desktop\NoteMind-App\node_modules\react-app-rewired\scripts\build.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    at Function.resolve (node:internal/modules/helpers:157:19)
+    at resolveMonacoPath (C:\Users\RDP\Desktop\NoteMind-App\node_modules\monaco-editor-webpack-plugin\out\index.js:30:20)
+    at getEditorMetadata (C:\Users\RDP\Desktop\NoteMind-App\node_modules\monaco-editor-webpack-plugin\out\index.js:41:26)
+    at new MonacoEditorWebpackPlugin (C:\Users\RDP\Desktop\NoteMind-App\node_modules\monaco-editor-webpack-plugin\out\index.js:74:26)
+    at Object.override [as webpack] (C:\Users\RDP\Desktop\NoteMind-App\frontend\config-overrides.js:4:23)
+    at C:\Users\RDP\Desktop\NoteMind-App\node_modules\react-app-rewired\overrides\webpack.js:18:23
+    at Object.<anonymous> (C:\Users\RDP\Desktop\NoteMind-App\node_modules\react-scripts\scripts\build.js:58:16)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'C:\\Users\\RDP\\Desktop\\NoteMind-App\\node_modules\\monaco-editor-webpack-plugin\\out\\index.js',
+    'C:\\Users\\RDP\\Desktop\\NoteMind-App\\frontend\\config-overrides.js',
+    'C:\\Users\\RDP\\Desktop\\NoteMind-App\\node_modules\\react-app-rewired\\config-overrides.js',
+    'C:\\Users\\RDP\\Desktop\\NoteMind-App\\node_modules\\react-app-rewired\\overrides\\paths.js',
+    'C:\\Users\\RDP\\Desktop\\NoteMind-App\\node_modules\\react-app-rewired\\scripts\\build.js'
+  ]
+}
+
+Node.js v22.21.1
+npm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path C:\Users\RDP\Desktop\NoteMind-App\frontend
+npm error workspace frontend@0.1.0
+npm error location C:\Users\RDP\Desktop\NoteMind-App\frontend
+npm error command failed
+npm error command C:\Windows\system32\cmd.exe /d /s /c react-app-rewired build

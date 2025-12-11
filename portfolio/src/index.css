@@ -1,26 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-dark text-white font-sans overflow-x-hidden;
+:root {
+  --primary: #00ffcc;
+  --secondary: #ff00ff;
+  --bg-dark: #050505;
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-dark);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[--primary] to-[--secondary];
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 rounded-full bg-gradient-to-r from-[--primary] to-[--secondary] text-black font-bold 
+           transform transition hover:scale-105 hover:shadow-[0_0_20px_rgba(0,255,204,0.5)];
   }
 }
 
-/* Custom Effects */
-.glass-panel {
-  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
-}
-
-.neon-glow {
-  box-shadow: 0 0 20px rgba(154, 92, 255, 0.5);
-}
-
-.cyber-grid {
-  background-size: 50px 50px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+.neo-brutalism {
+    box-shadow: 5px 5px 0px 0px rgba(0, 255, 204, 1);
+    border: 2px solid #00ffcc;
 }

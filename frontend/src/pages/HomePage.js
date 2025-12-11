@@ -1,8 +1,7 @@
-import React from 'react';
-import MainApp from '../components/MainApp';
+import LovableDashboard from '../components/dashboard/LovableDashboard';
 
 const HomePage = ({ user }) => {
-    return <MainApp user={user} />;
+    return <LovableDashboard user={user} />;
 };
 
 export default HomePage;

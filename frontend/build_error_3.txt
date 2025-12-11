@@ -1,0 +1,38 @@
+
+> frontend@0.1.0 build
+> react-app-rewired build
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+Creating an optimized production build...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+Failed to compile.
+
+[eslint] 
+src\components\Robot.jsx
+  Line 3:18:   'Box' is defined but never used   no-unused-vars
+  Line 39:39:  Unknown property 'dispose' found  react/no-unknown-property
+  Line 47:28:  Unknown property 'object' found   react/no-unknown-property
+  Line 50:28:  Unknown property 'object' found   react/no-unknown-property
+  Line 60:28:  Unknown property 'object' found   react/no-unknown-property
+
+src\components\ThreeScene.jsx
+  Line 3:40:   'OrbitControls' is defined but never used  no-unused-vars
+  Line 11:35:  Unknown property 'intensity' found         react/no-unknown-property
+  Line 12:32:  Unknown property 'position' found          react/no-unknown-property
+  Line 12:56:  Unknown property 'angle' found             react/no-unknown-property
+  Line 12:69:  Unknown property 'penumbra' found          react/no-unknown-property
+  Line 12:82:  Unknown property 'intensity' found         react/no-unknown-property
+  Line 13:33:  Unknown property 'position' found          react/no-unknown-property
+  Line 13:54:  Unknown property 'intensity' found         react/no-unknown-property
+  Line 13:84:  Unknown property 'distance' found          react/no-unknown-property
+
+Search for the keywords to learn more about each error.
+
+
+npm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path C:\Users\RDP\Desktop\NoteMind-App\frontend
+npm error workspace frontend@0.1.0
+npm error location C:\Users\RDP\Desktop\NoteMind-App\frontend
+npm error command failed
+npm error command C:\Windows\system32\cmd.exe /d /s /c react-app-rewired build

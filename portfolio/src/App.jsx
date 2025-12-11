@@ -6,15 +6,27 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 
+import ThreeScene from './components/ThreeScene';
+import ParallaxSection from './components/ParallaxSection';
+
 function App() {
   return (
-    <Layout>
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-    </Layout>
+    <>
+      <ThreeScene />
+      <Layout>
+        <Hero />
+        <ParallaxSection className="mb-20">
+          <About />
+        </ParallaxSection>
+        <ParallaxSection offset={30} className="mb-20">
+          <Skills />
+        </ParallaxSection>
+        <ParallaxSection offset={40} className="mb-20">
+          <Projects />
+        </ParallaxSection>
+        <Contact />
+      </Layout>
+    </>
   );
 }
 

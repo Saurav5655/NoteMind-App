@@ -8,24 +8,21 @@ const Navbar = ({ onLogin, onSignup }) => {
             animate={{ y: 0 }}
             className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
         >
-            <div className="max-w-7xl mx-auto glass-panel px-6 py-4 flex justify-between items-center">
-                <div className="font-display font-bold text-2xl tracking-wider text-white">
-                    ESHAN<span className="text-primary">.SEC</span>
+            <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div className="font-sans font-bold text-xl tracking-tight text-white flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-black">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </span>
+                    NoteMind
                 </div>
 
-                <div className="hidden md:flex gap-8 text-sm font-medium text-gray-300">
-                    {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
-                        <a
-                            key={item}
-                            href={`#${item.toLowerCase()}`}
-                            className="hover:text-primary transition-colors duration-300 uppercase tracking-widest text-xs"
-                        >
-                            {item}
-                        </a>
-                    ))}
+                <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                    {/* Removed Links as requested */}
                 </div>
 
-                <div className="hidden md:flex items-center gap-4">
+                <div className="flex items-center gap-4">
                     <button
                         onClick={onLogin}
                         className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
@@ -34,7 +31,7 @@ const Navbar = ({ onLogin, onSignup }) => {
                     </button>
                     <button
                         onClick={onSignup}
-                        className="px-5 py-2 rounded-full bg-primary/10 border border-primary/50 text-primary text-xs font-bold tracking-widest hover:bg-primary/20 transition-all duration-300 uppercase glow-btn"
+                        className="btn-primary"
                     >
                         Sign Up
                     </button>

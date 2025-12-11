@@ -3,12 +3,9 @@ import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
     return (
-        <div className="min-h-screen bg-dark text-white relative overflow-hidden">
-            {/* Background Elements */}
-            <div className="fixed inset-0 cyber-grid opacity-20 pointer-events-none z-0" />
-            <div className="fixed top-0 left-0 w-full h-[500px] bg-primary/20 blur-[150px] rounded-full -translate-y-1/2 pointer-events-none z-0" />
-
-            <div className="relative z-10 flex flex-col min-h-screen">
+        <div className="min-h-screen relative overflow-hidden pointer-events-none">
+            {/* Content Wrapper - Pointer events enabled for interaction */}
+            <div className="relative z-10 flex flex-col min-h-screen pointer-events-auto">
                 <Navbar />
                 <main className="flex-grow container mx-auto px-4 pt-24 pb-12">
                     {children}

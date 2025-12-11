@@ -54,19 +54,10 @@ const MainApp = ({ user }) => {
     };
 
     return (
-        <div className="flex w-full h-screen bg-[#0F1117] overflow-hidden font-sans text-gray-100">
-            {/* Background Effects (Global) */}
-            <div className="absolute inset-0 pointer-events-none z-0">
-                <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                        backgroundImage: 'radial-gradient(#8B5CF6 1px, transparent 1px)',
-                        backgroundSize: '32px 32px'
-                    }}
-                />
-                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-lovable-purple/10 rounded-full blur-[150px] animate-blob"></div>
-                <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-lovable-blue/10 rounded-full blur-[150px] animate-blob animation-delay-2000"></div>
-            </div>
+        <div className="flex w-full h-screen bg-transparent overflow-hidden font-sans text-gray-100 relative">
+            {/* Background Effects (Global) - REMOVED OLD ONES TO LET 3D SHOW */}
+            {/* The ThreeScene is behind this in App.js */}
+
 
             {/* Sidebar */}
             <div className="relative z-50 h-full">
